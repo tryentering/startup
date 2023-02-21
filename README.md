@@ -14,3 +14,8 @@ Key features
   Total games won displayed
   Ability to create new game rooms or join existing game rooms
   Gameplay displayed in realtime
+Simon HTML notes:
+  Go live button @bottom right of VS code
+  Again, fetch for info, pull to get up to date, commit (-am with message) to save, push to update git hub
+  <a href="link.here">Word to have the link</a> for a hyperlink imbedded
+  
