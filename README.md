@@ -19,3 +19,42 @@ Simon HTML notes:
   Again, fetch for info, pull to get up to date, commit (-am with message) to save, push to update git hub
   <a href="link.here">Word to have the link</a> for a hyperlink imbedded
   
+JS classes:
+class className {
+  this.classObj = val;
+  funcName(params) {
+  this.memberObject = val;
+  }
+  constructor(params) {
+  this.memberObj = param;l
+  }
+}
+obj = new className(args); //calls the constructor, returns an object of type className
+
+JS objects:
+obj = newObject();
+obj.one = "one";
+//equivalent to
+obj - newObject({one : "one"});
+//equivalent to 
+obj = {one: "one"};
+
+obj.one === "one"
+
+JS functions:
+a = "a"
+function func(a){
+  console.log(a):
+}
+const func = function(a) {
+   console.log(a);
+}
+const func = (a) => {
+  console.log(a);
+}
+const func = (a) => conosle.log(a);
+const func = a => console.log(a);
+
+JS arrays:
+arr = [obj, "1", [], func];
+//look up methods as you need them
