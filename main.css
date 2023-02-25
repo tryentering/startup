@@ -1,0 +1,43 @@
+menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row !important;
+    list-style: none;
+}
+
+main {
+    flex: 1 cacl(100vh - 120px);
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.gamesWon {
+    color: rgb(142, 23, 142)
+}
+
+.navbar-brand {
+    padding-left: 0.3em;
+    border-bottom: solid purple thick;
+}
+
+menu .nav-item {
+    padding: 0 0.3em;
+    border-bottom: solid purple thin;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+}
+
+footer {
+    flex: 0 40px;
+}
+
+header {
+    flex: 0 80px;
+}
