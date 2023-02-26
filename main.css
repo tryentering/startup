@@ -4,6 +4,18 @@ menu {
     flex-direction: row !important;
     list-style: none;
 }
+menu .nav-item {
+    padding: 0 0.3em;
+}
+.navbar-brand {
+    padding-left: 0.3em;
+    border-bottom: solid purple thick;
+    border-left: solid purple thick;
+}
+header {
+    flex: 0 80px;
+    border-bottom: solid purple thin;
+}
 
 main {
     flex: 1 cacl(100vh - 120px);
@@ -18,16 +30,6 @@ main {
     color: rgb(142, 23, 142)
 }
 
-.navbar-brand {
-    padding-left: 0.3em;
-    border-bottom: solid purple thick;
-}
-
-menu .nav-item {
-    padding: 0 0.3em;
-    border-bottom: solid purple thin;
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -36,8 +38,4 @@ body {
 
 footer {
     flex: 0 40px;
-}
-
-header {
-    flex: 0 80px;
 }
