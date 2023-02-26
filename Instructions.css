@@ -1,0 +1,82 @@
+a.Overview {
+    background-color: rgb(104, 104, 232);
+}
+a.Bidding {
+    background-color: pink;
+}
+a.PlayingCards {
+    background-color: rgb(248, 230, 195);
+}
+a.Followthrough {
+    background-color: rgb(27, 154, 154);
+}
+a.SetUp {
+    background-color: rgb(238, 199, 147);
+}
+html {
+    height: 100%;
+    font-size: 2.5vh;
+  }
+  body {
+    height: 100%;
+    
+    text-align: center;
+    font-size: 1rem;
+  }
+  [id^="slide"] {
+    display: flex;
+    
+    position: absolute;
+    top: 0; left: 0;
+    height: 0;
+    width: 100%;
+    overflow: hidden;
+    
+    color: #000;
+    text-decoration: none;
+    background: #fff;
+    
+    transition: height 1s ease 0s;
+  }
+  [id^="slide"] > section { 
+    margin: auto; 
+    max-width: 900px;
+  }
+  [id^="slide"]:nth-child(1) { 
+    height: 100%; 
+  }
+  [id^="slide"]:target { 
+    height: 100%;
+    outline: none;
+    transition: height 1s ease 1s;
+  }
+  
+  
+  /* Customizing! */
+  body {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+  }
+  h2 { 
+    font-size: 2.5rem; 
+    font-weight: 200; 
+    margin: 1.4rem 0; 
+  }
+  h1 { 
+    font-size: 3.2rem; 
+    font-weight: 200; 
+    margin: 1.4rem 0; 
+  }
+  p { margin: 0.8rem 0; }
+
+  .a { color: #000; }
+  /* .left { text-align: left; } not using these rn, but could be very useful later.
+  .right { text-align: right; } */
+  
+  [id^="slide"].blue { color: #fff; background: #09f; }
+  [id^="slide"].orange { color: #fff; background: #f90; }
+  
+  /* thumbs */
+  .thumbs { height: 120px; width: 300px; }
+
+  /* https://codepen.io/stephanstanisic/pen/ygNNEp */
