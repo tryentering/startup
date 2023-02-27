@@ -19,10 +19,32 @@ Simon HTML notes:
   Again, fetch for info, pull to get up to date, commit (-am with message) to save, push to update git hub
   <a href="link.here">Word to have the link</a> for a hyperlink imbedded
   
-Startup HTML and CSS Notes: To add with Java script: onclick for the cards that are in the player's hand Inability to make it to the lobby without creating a room or joining a room Figure out what to do with number of players (can you only play with four, if less than four does that reflect in the game room) Disable playing cards/ dropping out of the bid based on the phase of the game. Enable/disable clicking on opponents cards based on Phase of the game AND status of the player (i.e. did they win the bid). Update win count for logged in players. Correct number and type of cards displayed for user Flower count when in followthrough phase that everyone can see Test getting back into a room/game after navigating away from the page discarding of card for the rest of the game if you lose a round (maybe) if not, update instructions. Another option for that is to have lives, and you are out of the game if you lose all your lives (might be easier then discarding a card).
+Startup HTML and CSS Notes:
+  To add with Java script: onclick for the cards that are in the player's hand
+  Inability to make it to the lobby without creating a room or joining a room
+  Figure out what to do with number of players (can you only play with four, if less than four does that reflect in the game room)
+  Disable playing cards/ dropping out of the bid based on the phase of the game.
+  Enable/disable clicking on opponents cards based on Phase of the game AND status of the player (i.e. did they win the bid).
+  Update win count for logged in players.
+  Correct number and type of cards displayed for user
+  Flower count when in followthrough phase that everyone can see
+  Test getting back into a room/game after navigating away from the page
+  discarding of card for the rest of the game if you lose a round (maybe) if not, update instructions.
+  Another option for that is to have lives, and you are out of the game if you lose all your lives (might be easier then discarding a card).
 
-Features to add for quality of life: Play around with adding links back to the page in the instructions other than at the end Pictures in the instructions In followthrough phase, show all players which stack is being choosen for the card, and what it is. Or in followthrough phase show all players where the skull came from round win count for players Show opponent names and cards remaining Highlight opponent whose turn it is Ability to play the game anonymously (no login, no win count) Maybe an animation/video playing on the homepage demonstrating gameplay
-
+  
+  Features to add for quality of life:
+    Play around with adding links back to the page in the instructions other than at the end
+    Pictures in the instructions
+    In followthrough phase, show all players which stack is being choosen for the card, and what it is.
+    Or in followthrough phase show all players where the skull came from
+    round win count for players
+    Show opponent names and cards remaining
+    Highlight opponent whose turn it is
+    Ability to play the game anonymously (no login, no win count)
+    Maybe an animation/video playing on the homepage demonstrating gameplay
+    
+    
 JS classes:
 class className {
   this.classObj = val;
