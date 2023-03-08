@@ -48,31 +48,25 @@ main {
     border: solid thin rgb(142, 23, 142);
   }
   .player3cards > img {
-    height:20vh;
-    width: 15vh;
     position: absolute;
     top: 50%;
     margin-top: -10vh;
-    left: 45vh;
+    left: 25vw;
   }
   .player2cards > img{
-    height:20vh;
-    width: 15vh;
     position: absolute;
     top: 50%;
     margin-top: -10vh;
-    right: 45vh;
+    right: 25vw;
   }
 .player1cards > img{
-    height:20vh;
-    width: 15vh;
     position: absolute;
     top: 15vh;
-    left: 50%;
+    left: 50vw;
     margin-left: -7.5vh;
 
 }
-.player0cards  > img{
+.thisCards > img{
     height: 20vh;
     width: 15vh;
     position: absolute;
@@ -83,21 +77,20 @@ main {
 }
 .bidding {
     position: absolute;
-    right: 40vh;
+    right: 30vh;
     bottom: 15vh;
 }
 .remainingCards {
     position: absolute;
-    left: 10vh;
-    bottom: 10vh;
-    max-height: 20vh;
-    max-width: 55vh;
+    display: inline;
+    left: 7vw;
+    bottom: 15vh;
+    width: 700px;
+    height: 200px;
 }
 .remainingCards > img {
-    height: 20vh;
-    width: 15vh;
+    display: inline-block;
 }
-
 body {
     display: flex;
     flex-direction: column;
@@ -106,6 +99,10 @@ body {
 .player-list {
     font-size: 2.5vh;
     color: black;
+}
+.card {
+    height: 200px;
+    width: 150px;
 }
 
 footer {
