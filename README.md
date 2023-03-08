@@ -78,11 +78,11 @@ function func(a){
 const func = function(a) {
    console.log(a);
 }
-const func = (a) => {
+const func = (a) => { // No implied return statement
   console.log(a);
 }
-const func = (a) => conosle.log(a);
-const func = a => console.log(a);
+const func = (a) => conosle.log(a); //On one line + no curly braces- implied return statement
+const func = a => console.log(a);   //same as ^
 
 JS arrays:
 arr = [obj, "1", [], func];
@@ -101,3 +101,56 @@ Simon JS Notes:
   
   sound = new Audio('anything needed for the root path/' + fileName);  
   sound.onended = resolve;   will play the sound
+  
+  
+  
+Notes for Midterm:
+  div = division element
+  DNS = domain name system
+  To point to another dns record use a CNAME dns record type. Alias for another record.
+  To point to a literal ip address use A record type
+  
+  DNS subdomain ex = cs260.cs.byu.edu
+  The whole website. Subdomain is extra stuff out front.
+  
+  Promise Example:
+![Screen Shot 2023-03-08 at 12 34 49 AM](https://user-images.githubusercontent.com/119990541/223650152-d23e38ff-d06d-43dd-bbb0-47ea135959dd.png)
+  
+  JSON example (need the quotes:
+  ![Screen Shot 2023-03-08 at 12 40 47 AM](https://user-images.githubusercontent.com/119990541/223651262-537e20c1-d82c-4f25-bbf9-4056c6418da0.png)
+ 
+  CSS example selector: div.className {
+  
+  filter filters the values and only keeps the stuff that returns true. This is a regex. elem.match. Rexex starts and ends with /. i After means case insensitive
+![Screen Shot 2023-03-08 at 12 44 53 AM](https://user-images.githubusercontent.com/119990541/223652125-9b4476fc-84a6-4011-91b3-137476e2b64f.png)
+
+  CSS box model order of elements:
+  Content
+  Padding
+  Border
+  Margin
+  
+  CSS selector + text stuff
+  ![Screen Shot 2023-03-08 at 12 42 18 AM](https://user-images.githubusercontent.com/119990541/223659759-a7710ad6-92cd-4076-8276-f45d6cf59b92.png)  Array.reduce( (a, v) => [a,v].join(":")); //Will take the elements of Array and return them as elem:elem:elem:
+  
+  reduces down to one value
+  
+  document.querySelector("tag") will return the first element in the document that matches the tag
+  
+  link element is to other html stuff. A is for hyperlinks
+  ![Screen Shot 2023-03-08 at 1 00 15 AM](https://user-images.githubusercontent.com/119990541/223655210-0fe477a1-2984-41c1-ada3-76ecc06bd617.png)
+  
+  Map takes an array and maps it to an array of equal size of elements from the callback function provided to it
+![Screen Shot 2023-03-08 at 1 01 21 AM](https://user-images.githubusercontent.com/119990541/223655426-f5231c1c-7b85-428d-912c-c09126e423a3.png)
+  
+  Async/Await ex.   Await means the promise will resolve before executions continues. Just stick async on the front of any function returning a promise (needed to use await, no harm otherwise). Await in front of a function that doesn't return a priomise means that function will be wrapped in a promise when it is returned Without the await, the code would just wait the 10 second time out and the output would be ABD
+![Screen Shot 2023-03-08 at 1 05 44 AM](https://user-images.githubusercontent.com/119990541/223656235-bdb4fc13-eabc-453d-9cdc-24c1c4288735.png)
+
+  
+  htmlEl.textContent will throw away any children and set text as the one child of that element
+  
+  Flex example 
+  ![Screen Shot 2023-03-08 at 1 13 22 AM](https://user-images.githubusercontent.com/119990541/223657862-5ed050a3-e1d8-44f7-9528-c9f343bcb47e.png)
+  
+  TODO Learn these commands:
+![Screen Shot 2023-03-08 at 1 18 41 AM](https://user-images.githubusercontent.com/119990541/223659555-7abca710-2da5-4c99-85e7-08ce1974cc85.png)
