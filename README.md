@@ -87,3 +87,17 @@ const func = a => console.log(a);
 JS arrays:
 arr = [obj, "1", [], func];
 //look up methods as you need them
+
+Simon JS Notes:
+  Select elements from html with class: document.querySelectorAll(<class>)   returns a node list-can use forEach((el, i) => { /*stuff for each element*/ }
+  Select element from html with id: document.querySelector('#score')   returns an element. can use .textContent to change the text content
+  
+  localStorage.setItem(<string key>, <value>);   store an item
+  localStorage.getItem(<string key>);   returns a JSON object. Can use JSON.parse to convert into an array
+  
+  document.createElement(<class>);
+  elem.appendChild(<elem>);
+  '<tr><td colSpan = 4> no scores yet </td></tr>'    literal HTML. creates a table row with one data cell spanning four columns with the text no scores yet
+  
+  sound = new Audio('anything needed for the root path/' + fileName);  
+  sound.onended = resolve;   will play the sound
