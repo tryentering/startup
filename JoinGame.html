@@ -6,9 +6,10 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
+    <script src = "GetToGame.js"></script>
     <link rel="stylesheet" href="main.css" />
   </head>
-  <body class="bg-info text-white">
+  <body class="bg-info text-white" onload = "gamesWon()">
     <header class = "container-fluid">
         <nav class = "navbar fixed-top navbar-dark">
             <img src = "FlowerSkullCard.jpeg">
@@ -25,7 +26,8 @@
     </header>
     <main class = bg-light>
         <div class = text-dark>
-            <h1 class = "gamesWon"> Games Won: 0 sucka</h1>
+            <h1 id = "gamesWon">IF THIS APPEARS SOMETHING IS WRONG</h1>
+
         </div>
         <form class = "JoinGame" method="get" action="Lobby.html">
             <input type="text" id="room code" placeholder="Room Code Here" />
