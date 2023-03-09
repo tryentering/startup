@@ -20,16 +20,16 @@ Simon HTML notes:
   <a href="link.here">Word to have the link</a> for a hyperlink imbedded
   
 Startup HTML and CSS Notes:
-  To add with Java script:
+  To add with Javascript:
     Correctly display opponent's names in the lobby
-    onclick for the cards that are in the player's hand
+    onclick for the cards that are in the player's hand.  >
     Inability to make it to the lobby without creating a room or joining a room
-    Figure out what to do with number of players (can you only play with four, if less than four does that reflect in the game room)
-    Disable playing cards/ dropping out of the bid based on the phase of the game.
-    Enable/disable clicking on opponents cards based on Phase of the game AND status of the player (i.e. did they win the bid).
-    Update win count for logged in players.
-    Correct number and type of cards displayed for user
-    Flower count when in followthrough phase that everyone can see
+    Figure out what to do with number of players (can you only play with four, if less than four does that reflect in the game room).  >
+    Disable playing cards/ dropping out of the bid based on the phase of the game.   >
+    Enable/disable clicking on opponents cards based on Phase of the game AND status of the player (i.e. did they win the bid).   >
+    Update win count for logged in players.   
+    Correct number and type of cards displayed for user    >
+    Flower count when in followthrough phase that everyone can see.  >
     Test getting back into a room/game after navigating away from the page
     discarding of card for the rest of the game if you lose a round (maybe) if not, update instructions.
     Another option for that is to have lives, and you are out of the game if you lose all your lives (might be easier then discarding a card).
@@ -60,6 +60,12 @@ class className {
 }
 obj = new className(args); //calls the constructor, returns an object of type className
 
+JS Rest and Spread:
+  rest in func definition:
+  func(arg, ...arg2) { //arg2 will be a list with any remaining parameters
+  
+  spread in func call:
+  func(...[elem, elem]) { //will assign the nth element of the array to the nth arg of func
 JS objects:
 obj = newObject();
 obj.one = "one";
@@ -105,6 +111,10 @@ Simon JS Notes:
   
   
 Notes for Midterm:
+  
+  Website Stuff:
+    Web Service Gateways (reverse proxy) are web services that listens on port 443 and maps requests to the correrct port
+    Caddy is handling the gateway stuff. (creation and rotation of web certificates)
   div = division element
   DNS = domain name system
   To point to another dns record use a CNAME dns record type. Alias for another record.
@@ -152,5 +162,15 @@ Notes for Midterm:
   Flex example 
   ![Screen Shot 2023-03-08 at 1 13 22 AM](https://user-images.githubusercontent.com/119990541/223657862-5ed050a3-e1d8-44f7-9528-c9f343bcb47e.png)
   
-  TODO Learn these commands:
+  ls -L means long list. Will output the items with this stuff <img width="678" alt="Screen Shot 2023-03-08 at 8 45 17 PM" src="https://user-images.githubusercontent.com/119990541/223911473-41d3a0ba-7025-4ba9-a036-d4d63c32b4d6.png">
+<img width="793" alt="Screen Shot 2023-03-08 at 8 45 27 PM" src="https://user-images.githubusercontent.com/119990541/223911476-baa5a3c7-3fd7-410b-8861-3f7769f8b280.png">
+  
+  ls -a	Lists all entries in the directory, including the entries that begin with a . (dot).
+  
+  sudo allows any user in the sudoers file execute a command as an administrator.
+  
+  ssh opens a connection to a remote server and then the user can run shell commands on that server
+  
+  curl will make an http request and show the time response
+
 ![Screen Shot 2023-03-08 at 1 18 41 AM](https://user-images.githubusercontent.com/119990541/223659555-7abca710-2da5-4c99-85e7-08ce1974cc85.png)
