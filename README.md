@@ -25,10 +25,10 @@ Startup HTML and CSS Notes:
     onclick for the cards that are in the player's hand.  >
     Inability to make it to the lobby without creating a room or joining a room
     Figure out what to do with number of players (can you only play with four, if less than four does that reflect in the game room).  >
-    Disable playing cards/ dropping out of the bid based on the phase of the game.   >
-    Enable/disable clicking on opponents cards based on Phase of the game AND status of the player (i.e. did they win the bid).   >
+    Disable playing cards/ dropping out of the bid based on the phase of the game.
+    Enable/disable clicking on opponents cards based on Phase of the game AND status of the player (i.e. did they win the bid).
     Update win count for logged in players.   
-    Correct number and type of cards displayed for user    >
+    Correct number and type of cards displayed for user 
     Flower count when in followthrough phase that everyone can see.  >
     Test getting back into a room/game after navigating away from the page
     discarding of card for the rest of the game if you lose a round (maybe) if not, update instructions.
@@ -174,3 +174,22 @@ Notes for Midterm:
   curl will make an http request and show the time response
 
 ![Screen Shot 2023-03-08 at 1 18 41 AM](https://user-images.githubusercontent.com/119990541/223659555-7abca710-2da5-4c99-85e7-08ce1974cc85.png)
+  
+  
+  Javascript Startup Notes:
+    Stuff to implement still:
+      using room codes to allow for others to join different lobbys
+      Correctly display opponent's names in the lobby.
+      Handle when one person runs out of cards.
+      Flower count when in followthrough phase that everyone can see.
+      maybe different numbers of players
+      quality of life-- screenshotsa and other pictures/animations on instructions
+      rounds won counter in game
+  
+    javascript stuff:
+      Array.splice(index, number of elements to erase, element to insert)
+      HTMLelement.childElementCount
+      if a function has async and it doesn't return a promise, the return will be wrapped in a promise anyway (very nice)
+      if taking input from a form, do htmlelem.value to get the text input
+
+    
