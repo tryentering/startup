@@ -116,9 +116,9 @@ class Game {
             console.log("Out of turn bid");
         }
     }
-    dropOutOfBidding() {
-        this.bidding = false;
-        this.endTurn();
+    async dropOutOfBidding() {
+        this.phaseInfo.textContent = "Dropped out of bidding. No real opponents to play."
+        this.resetRound();
     }
     async opponentsTurns() {
         if (this.playing) {
