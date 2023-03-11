@@ -1,22 +1,4 @@
 class Game {
-    // numFlowers;
-    // numSkulls;
-    // cards;
-    // isTurn;
-    // stack;
-    // op1Stack;
-    // op2Stack;
-    // op3Stack;
-    // discarding;
-    // playing; //Phase one is only playing
-    // bidding; //Phase two is playing or bidding
-    // //Phase three is only bidding
-    // revealing; //Phase dour is only revealing
-    // prevBid; //ythe bid of this player from the last turn
-    // currBid; //the current bid from any player
-    // leftToReveal; //cards to reveal to win the round (phase 4)
-    // phaseInfo;
-    // roundsWon;
 
     constructor() {
         this.stDelay = 1000;
@@ -41,7 +23,7 @@ class Game {
     startTurn() {
         this.isTurn = true;
         if (!this.playing && !this.revealing && !this.bidding) { //handles end game when one player needs to reveal.
-            //Is a precaution as that player's turn shouldn't end
+            //Is a precaution as that player's turn shouldn't end until the game does
             this.phaseInfo.textContent = "Revealing\n" + this.leftToReveal + "Cards left to reveal";
             this.endTurn();
         }
