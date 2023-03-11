@@ -23,32 +23,34 @@
     </nav>
   </header>
   <main class = "bg-light text-dark">
-  <div class = "thisCards">
-    <img class = "card" src = "EmptyCard.jpg">
+    <t>Phase Info</t>
+  <div id = "thisCards" class = "stack">
+    <img class = "card" onclick = "game.revealCard(this)" src = "EmptyCard.jpg">
   </div>
-  <div class = "player1cards">
-    <img class = "card" src = "FlowerSkullCard.jpeg">
+  <div id = "player1cards" class = "stack">
+    <img class = "card" onclick = "game.revealCard(this)" src = "FlowerSkullCard.jpeg">
   </div>
-  <div class = "player2cards">
-    <img class = "card" src = "FlowerSkullCard.jpeg">
+  <div id = "player2cards" class = "stack">
+    <img class = "card" onclick = "game.revealCard(this)" src = "FlowerSkullCard.jpeg">
   </div>
-  <div class = "player3cards">
-    <img class = "card"  src = "FlowerSkullCard.jpeg">
+  <div id = "player3cards" class = "stack">
+    <img class = "card" onclick = "game.revealCard(this)" src = "FlowerSkullCard.jpeg">
   </div>
 
   <div class = "turnchoices">
     <div class = "remainingCards">
-      <img class = "card" id = "card1" onclick="game.playCard()" src = "SkullCard.jpeg">
-      <img class = "card" id = "card2" onclick="game.playCard()" src = "FlowerCard.jpeg">
-      <img class = "card" id = "card3" onclick="game.playCard()" src = "FlowerCard.jpeg">
-      <img class = "card" id = "card4" onclick="game.playCard()" src = "FlowerCard.jpeg">
+      <img class = "card" id = "skull" onclick="game.playCard(this)" src = "SkullCard.jpeg">
+      <img class = "card" id = "flower" onclick="game.playCard(this)" src = "FlowerCard.jpeg">
+      <img class = "card" id = "flower" onclick="game.playCard(this)" src = "FlowerCard.jpeg">
+      <img class = "card" id = "flower" onclick="game.playCard(this)" src = "FlowerCard.jpeg">
     </div>
       <form class = "bidding" method="get">
         <p for="range">Bid: </p>
-        <input type="range" name="varRange" id="range" min="0" max="100" step="1" value="0" />
-        <output id="rangeOutput" for="range">0</output>
+        <input type="range" name="varRange" id="range" min="1" max="100" step="1" value="0" />
+        <output id="rangeOutput" for="range">1</output>
         <br>
-        <button type = "submit" class = "btn btn-primary">Drop out of Bidding</button> 
+        <button type = "submit" class = "btn btn-primary" onclick = "game.makeBid()"> Confirm Bid</button> 
+        <button type = "submit" class = "btn btn-primary" onclick = "game.dropOutOfBid()">Drop out of Bidding</button> 
       </form>
   </div>
   </main>

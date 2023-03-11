@@ -31,12 +31,12 @@
             <h1 id = "gamesWon">IF THIS APPEARS SOMETHING IS WRONG</h1>
 
         </div>
-        <form class = "JoinGame" method="get" action="Lobby.html">
-            <input type="text" id="room code" placeholder="Room Code Here" />
-            <button type="submit" class="btn btn-primary" href = "Lobby.html">Join Room</button>
+        <form method = "get" class = "JoinGame" action = "Lobby.html">
+            <input type="text" id="room-code" placeholder="Room Code Here" />
+            <button type="submit" class="btn btn-primary" onclick = "joinRoom()">Join Room</button>
             <br>
-            <button type = "submit" class = "btn btn-primary" href = "Lobby.html">Create Room</button> 
-          </form>
+            <button type = "submit" class = "btn btn-primary" onclick = "createRoom()">Create Room</button> 
+        </form>
     </main>
     <footer>
         <div class="container-fluid">

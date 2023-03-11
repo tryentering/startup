@@ -11,14 +11,14 @@
   <link rel="stylesheet" href="main.css" />
   <script src = "GetToGame.js"></script>
 </head>
-<body class="bg-info text-white">
+<body class="bg-info text-dark" onload = "loadLobby() ">
   <header class = "container-fluid">
       <nav class = "navbar fixed-top navbar-dark">
         <img src = "FlowerSkullCard.jpeg">
           <a class="navbar-brand" href="Homepage.html">Home</a>
           <menu class = "navbar-nav">
               <li class = "nav-item">
-                  <a class = "nav-link" href = "#">Join Game</a>
+                  <a class = "nav-link" href = "JoinGame.html">Join Game</a>
               </li>
               <li class = "nav-item">
                   <a class = "nav-link" href = "Instructions.html">Instructions</a>
@@ -27,15 +27,18 @@
       </nav>
   </header>
   <main class = bg-light>
-    <div class = player-list>
+    <ul class = lobby-info>
+    <li class = "room-code"></li>
+    <li class = player-list>
       Players:
       <ul>
         <li>This user's name </li>
         <li>Other players in the list</li>
-        <li>Cont.</li>
+        <li>Cont</li>
       </ul>
   <a class = "btn btn-primary" href = "Game.html">Ready</a>
-  </div>
+    </li>
+</ul>
   </main>
   <footer>
     <div class="container-fluid">
