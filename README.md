@@ -20,16 +20,16 @@ Simon HTML notes:
   <a href="link.here">Word to have the link</a> for a hyperlink imbedded
   
 Startup HTML and CSS Notes:
-  To add with Java script:
+  To add with Javascript:
     Correctly display opponent's names in the lobby
-    onclick for the cards that are in the player's hand
+    onclick for the cards that are in the player's hand.  >
     Inability to make it to the lobby without creating a room or joining a room
-    Figure out what to do with number of players (can you only play with four, if less than four does that reflect in the game room)
-    Disable playing cards/ dropping out of the bid based on the phase of the game.
-    Enable/disable clicking on opponents cards based on Phase of the game AND status of the player (i.e. did they win the bid).
-    Update win count for logged in players.
-    Correct number and type of cards displayed for user
-    Flower count when in followthrough phase that everyone can see
+    Figure out what to do with number of players (can you only play with four, if less than four does that reflect in the game room).  >
+    Disable playing cards/ dropping out of the bid based on the phase of the game.   >
+    Enable/disable clicking on opponents cards based on Phase of the game AND status of the player (i.e. did they win the bid).   >
+    Update win count for logged in players.   
+    Correct number and type of cards displayed for user    >
+    Flower count when in followthrough phase that everyone can see.  >
     Test getting back into a room/game after navigating away from the page
     discarding of card for the rest of the game if you lose a round (maybe) if not, update instructions.
     Another option for that is to have lives, and you are out of the game if you lose all your lives (might be easier then discarding a card).
@@ -60,6 +60,12 @@ class className {
 }
 obj = new className(args); //calls the constructor, returns an object of type className
 
+JS Rest and Spread:
+  rest in func definition:
+  func(arg, ...arg2) { //arg2 will be a list with any remaining parameters
+  
+  spread in func call:
+  func(...[elem, elem]) { //will assign the nth element of the array to the nth arg of func
 JS objects:
 obj = newObject();
 obj.one = "one";
@@ -78,11 +84,11 @@ function func(a){
 const func = function(a) {
    console.log(a);
 }
-const func = (a) => {
+const func = (a) => { // No implied return statement
   console.log(a);
 }
-const func = (a) => conosle.log(a);
-const func = a => console.log(a);
+const func = (a) => conosle.log(a); //On one line + no curly braces- implied return statement
+const func = a => console.log(a);   //same as ^
 
 JS arrays:
 arr = [obj, "1", [], func];
@@ -101,3 +107,70 @@ Simon JS Notes:
   
   sound = new Audio('anything needed for the root path/' + fileName);  
   sound.onended = resolve;   will play the sound
+  
+  
+  
+Notes for Midterm:
+  
+  Website Stuff:
+    Web Service Gateways (reverse proxy) are web services that listens on port 443 and maps requests to the correrct port
+    Caddy is handling the gateway stuff. (creation and rotation of web certificates)
+  div = division element
+  DNS = domain name system
+  To point to another dns record use a CNAME dns record type. Alias for another record.
+  To point to a literal ip address use A record type
+  
+  DNS subdomain ex = cs260.cs.byu.edu
+  The whole website. Subdomain is extra stuff out front.
+  
+  Promise Example:
+![Screen Shot 2023-03-08 at 12 34 49 AM](https://user-images.githubusercontent.com/119990541/223650152-d23e38ff-d06d-43dd-bbb0-47ea135959dd.png)
+  
+  JSON example (need the quotes:
+  ![Screen Shot 2023-03-08 at 12 40 47 AM](https://user-images.githubusercontent.com/119990541/223651262-537e20c1-d82c-4f25-bbf9-4056c6418da0.png)
+ 
+  CSS example selector: div.className {
+  
+  filter filters the values and only keeps the stuff that returns true. This is a regex. elem.match. Rexex starts and ends with /. i After means case insensitive
+![Screen Shot 2023-03-08 at 12 44 53 AM](https://user-images.githubusercontent.com/119990541/223652125-9b4476fc-84a6-4011-91b3-137476e2b64f.png)
+
+  CSS box model order of elements:
+  Content
+  Padding
+  Border
+  Margin
+  
+  CSS selector + text stuff
+  ![Screen Shot 2023-03-08 at 12 42 18 AM](https://user-images.githubusercontent.com/119990541/223659759-a7710ad6-92cd-4076-8276-f45d6cf59b92.png)  Array.reduce( (a, v) => [a,v].join(":")); //Will take the elements of Array and return them as elem:elem:elem:
+  
+  reduces down to one value
+  
+  document.querySelector("tag") will return the first element in the document that matches the tag
+  
+  link element is to other html stuff. A is for hyperlinks
+  ![Screen Shot 2023-03-08 at 1 00 15 AM](https://user-images.githubusercontent.com/119990541/223655210-0fe477a1-2984-41c1-ada3-76ecc06bd617.png)
+  
+  Map takes an array and maps it to an array of equal size of elements from the callback function provided to it
+![Screen Shot 2023-03-08 at 1 01 21 AM](https://user-images.githubusercontent.com/119990541/223655426-f5231c1c-7b85-428d-912c-c09126e423a3.png)
+  
+  Async/Await ex.   Await means the promise will resolve before executions continues. Just stick async on the front of any function returning a promise (needed to use await, no harm otherwise). Await in front of a function that doesn't return a priomise means that function will be wrapped in a promise when it is returned Without the await, the code would just wait the 10 second time out and the output would be ABD
+![Screen Shot 2023-03-08 at 1 05 44 AM](https://user-images.githubusercontent.com/119990541/223656235-bdb4fc13-eabc-453d-9cdc-24c1c4288735.png)
+
+  
+  htmlEl.textContent will throw away any children and set text as the one child of that element
+  
+  Flex example 
+  ![Screen Shot 2023-03-08 at 1 13 22 AM](https://user-images.githubusercontent.com/119990541/223657862-5ed050a3-e1d8-44f7-9528-c9f343bcb47e.png)
+  
+  ls -L means long list. Will output the items with this stuff <img width="678" alt="Screen Shot 2023-03-08 at 8 45 17 PM" src="https://user-images.githubusercontent.com/119990541/223911473-41d3a0ba-7025-4ba9-a036-d4d63c32b4d6.png">
+<img width="793" alt="Screen Shot 2023-03-08 at 8 45 27 PM" src="https://user-images.githubusercontent.com/119990541/223911476-baa5a3c7-3fd7-410b-8861-3f7769f8b280.png">
+  
+  ls -a	Lists all entries in the directory, including the entries that begin with a . (dot).
+  
+  sudo allows any user in the sudoers file execute a command as an administrator.
+  
+  ssh opens a connection to a remote server and then the user can run shell commands on that server
+  
+  curl will make an http request and show the time response
+
+![Screen Shot 2023-03-08 at 1 18 41 AM](https://user-images.githubusercontent.com/119990541/223659555-7abca710-2da5-4c99-85e7-08ce1974cc85.png)
