@@ -250,3 +250,4 @@ Notes From Simon Services:
           if (scoresText) {
             scores = JSON.parse(scoresText);
           }
+      See the about.js file for examples of using third-party endpoints
