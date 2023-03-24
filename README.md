@@ -192,4 +192,61 @@ Notes for Midterm:
       if a function has async and it doesn't return a promise, the return will be wrapped in a promise anyway (very nice)
       if taking input from a form, do htmlelem.value to get the text input
 
+Notes From Simon Services:
+  At a high level, we are changing from having the front end interact with only its local, temporary storage to now it will be using service endpoints. Those endpoints will be called with http in the front end code. Right now the backebnd is in the new index.js which will use filler values and local storage. So no significant change to the UI, but it is prepping for using the server, databases and persistent storage.
+  
+  
     
+  Set up for the endpoints:
+    intall express from npm. Inlcude lines: constr express = require('express');, app = express();, app.use(expresss.json());, app.use(express.static('public'));.
+    Those lines will tell the code to use express, that files to be seved up should be from the public directory, and that http request objects should be converted to json objects.
+   Also, const port = process.argv.length > ? process.argv[2] : 3000; will give a default port of 3000 to the website and allow for command line arguments to override that.
+   
+   Structure for the endpoints:
+    Start with a router object. var apiRouter = express.Router(); will be useful later and set up a nice framework.
+    app.use(`/api`, apiRouter); will direct any request objects that start with /api to the router.
+    
+    Endpoints:
+      apiRouter.get/post/delete('/path'/*without the api in the front*/, (req, res) => {
+        res.send(scores);
+      });
+      
+      apiRouter.post('/score', (req, res) => {
+        scores = updateScores(req.body, scores);
+        res.send(scores);
+      });
+      //will send any unknown requests back to the index.html page.
+      app.use((_req, res) => {
+       res.sendFile('index.html', { root: 'public' });
+      });
+      
+   How to Use the endpoints:
+      For the post method above:
+        try {
+           const response = await fetch('/api/score', { //this is the beginning of the http request object
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newScore),
+          });
+
+          // Store what the service gave us as the high scores in case of network failure
+          const scores = await response.json();
+          localStorage.setItem('scores', JSON.stringify(scores));
+        } catch {
+          // If there was an error then just track scores locally
+          this.updateScoresLocal(newScore);
+        }
+     For a get method:
+        try {
+          // Get the latest high scores from the service
+          const response = await fetch('/api/scores');
+          scores = await response.json();
+
+          // Save the scores in case we go offline in the future
+          localStorage.setItem('scores', JSON.stringify(scores));
+        } catch {
+          // If there was an error then just use the last saved scores
+          const scoresText = localStorage.getItem('scores');
+          if (scoresText) {
+            scores = JSON.parse(scoresText);
+          }
