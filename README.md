@@ -251,3 +251,10 @@ Notes From Simon Services:
             scores = JSON.parse(scoresText);
           }
       See the about.js file for examples of using third-party endpoints
+
+Notes from Simon DB:
+   Difference from Simon services is that now the http requests will result in the backend getting/posting info from mongo db. Changes include:
+      A new batabase fjs file to be included on the backend to handle the requests. Good form is one service endpoint per request, one function in the database per service, and each function in the database does not interact with anything on the front end.
+      To access the mongodb, install the mongodb node package, have the line const {MongoClient} = require('mongodb');  Get the info to use the mongodb server (username, password, hostname) from environment variables. Then make a variable client: const client = new MongoClient(url);  Use the client to access the correct database and collection from the cluster: const scoreCollection = client.db('simon').collection('score');  
+      on scoreCollection, functions such as: insertOne and find can be used. For get methods, inputs for query and options are used. See code for examples. The return fron get requests can be put into a js array using .toArray()
+   
