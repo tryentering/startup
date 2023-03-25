@@ -257,4 +257,4 @@ Notes from Simon DB:
       A new batabase fjs file to be included on the backend to handle the requests. Good form is one service endpoint per request, one function in the database per service, and each function in the database does not interact with anything on the front end.
       To access the mongodb, install the mongodb node package, have the line const {MongoClient} = require('mongodb');  Get the info to use the mongodb server (username, password, hostname) from environment variables. Then make a variable client: const client = new MongoClient(url);  Use the client to access the correct database and collection from the cluster: const scoreCollection = client.db('simon').collection('score');  
       on scoreCollection, functions such as: insertOne and find can be used. For get methods, inputs for query and options are used. See code for examples. The return fron get requests can be put into a js array using .toArray()
-   
+   While the information should be taken from the db, it can be placed in local storage for access if there is an issue with the network that prevents accessing the db in the future.
