@@ -258,3 +258,27 @@ Notes from Simon DB:
       To access the mongodb, install the mongodb node package, have the line const {MongoClient} = require('mongodb');  Get the info to use the mongodb server (username, password, hostname) from environment variables. Then make a variable client: const client = new MongoClient(url);  Use the client to access the correct database and collection from the cluster: const scoreCollection = client.db('simon').collection('score');  
       on scoreCollection, functions such as: insertOne and find can be used. For get methods, inputs for query and options are used. See code for examples. The return fron get requests can be put into a js array using .toArray()
    While the information should be taken from the db, it can be placed in local storage for access if there is an issue with the network that prevents accessing the db in the future.
+
+Notes from Simon Login:
+  Now we will create a bit of security by wrapping the original router in a router that will create users, login users, and logout users. For kicks it also has the email method. This unsecure router will use the first router, meaning that all calls will pass through the first router. 
+  First thing the secure router does is:
+  secureApiRouter.use(async (req, res, next) => {
+  authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken(authToken);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+});
+This function will continue to call service endpoints if the user is authorized and return an error if not.
+
+TODO: Look more into how cookies are stored (specifically in local storage, in the request/result objects in the service enpoints (is there a section in http for them?
+
+The way the user is authenticated is by way of hashing their password through bcrypt. The database will generate an authtoken through uuid which will be used to authenticate. The token is deleted when the user logs out. 
+When the user logs in, their password will be hashed in the same way as it origionally was, and then the two hashed strings will be compared to see if the typed password was the same as the stored.
+A lot of the code in login is to see if the user was already logged in. While neat, it is not necissary.
+
+The login and create methods on the frontend will take in the user input, and call the corresponding endpoints. The endpoints will use the database class which will use mongodb. All this will return back, and the front end will be notified whether the user has been logged in. If so, they will be taken to the rest of the website. If not, the body of the error message will be displayed.
+
+For startup- login and create in the same way, and store the room codes as well. Figure out when room codes should be deleted, how cards should be stored in the database, and how the bid should be stored.
