@@ -282,3 +282,12 @@ A lot of the code in login is to see if the user was already logged in. While ne
 The login and create methods on the frontend will take in the user input, and call the corresponding endpoints. The endpoints will use the database class which will use mongodb. All this will return back, and the front end will be notified whether the user has been logged in. If so, they will be taken to the rest of the website. If not, the body of the error message will be displayed.
 
 For startup- login and create in the same way, and store the room codes as well. Figure out when room codes should be deleted, how cards should be stored in the database, and how the bid should be stored.
+
+Notes from Simon Web Sockets:
+   Web sockets add peer to peer communication thorugh the server. This uses the websocket class. We will make a websocketserver in the peerproxy class which will be exported to index.js where there will be a peerproxy object created.
+  The peerproxy will have methods to initialize the upgrading the http to the websocket, a connection method to add peers (which will also create a method to send messages to all the open connections), and a method to close connections which will be used by the setinterval function which will check all conections every ten seconds to see if they are still active.
+  
+  In play.js there is a function configureWebSocket which handles displaying all messages (onopen, onclose, onmessage) by altering play.html. It also has a broadcast event which will send updates to all connections. 
+  Broadcast event is used in the save scores method.
+  
+  TODO: for startup begin with a chat, make sure it works. Then start implementing making rooms, updating the bid, who is allowed to take actions, rounds won, game won, propper icons, and player names.
