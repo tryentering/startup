@@ -192,4 +192,102 @@ Notes for Midterm:
       if a function has async and it doesn't return a promise, the return will be wrapped in a promise anyway (very nice)
       if taking input from a form, do htmlelem.value to get the text input
 
+Notes From Simon Services:
+  At a high level, we are changing from having the front end interact with only its local, temporary storage to now it will be using service endpoints. Those endpoints will be called with http in the front end code. Right now the backebnd is in the new index.js which will use filler values and local storage. So no significant change to the UI, but it is prepping for using the server, databases and persistent storage.
+  
+  
     
+  Set up for the endpoints:
+    intall express from npm. Inlcude lines: constr express = require('express');, app = express();, app.use(expresss.json());, app.use(express.static('public'));.
+    Those lines will tell the code to use express, that files to be seved up should be from the public directory, and that http request objects should be converted to json objects.
+   Also, const port = process.argv.length > ? process.argv[2] : 3000; will give a default port of 3000 to the website and allow for command line arguments to override that.
+   
+   Structure for the endpoints:
+    Start with a router object. var apiRouter = express.Router(); will be useful later and set up a nice framework.
+    app.use(`/api`, apiRouter); will direct any request objects that start with /api to the router.
+    
+    Endpoints:
+      apiRouter.get/post/delete('/path'/*without the api in the front*/, (req, res) => {
+        res.send(scores);
+      });
+      
+      apiRouter.post('/score', (req, res) => {
+        scores = updateScores(req.body, scores);
+        res.send(scores);
+      });
+      //will send any unknown requests back to the index.html page.
+      app.use((_req, res) => {
+       res.sendFile('index.html', { root: 'public' });
+      });
+      
+   How to Use the endpoints:
+      For the post method above:
+        try {
+           const response = await fetch('/api/score', { //this is the beginning of the http request object
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(newScore),
+          });
+
+          // Store what the service gave us as the high scores in case of network failure
+          const scores = await response.json();
+          localStorage.setItem('scores', JSON.stringify(scores));
+        } catch {
+          // If there was an error then just track scores locally
+          this.updateScoresLocal(newScore);
+        }
+     For a get method:
+        try {
+          // Get the latest high scores from the service
+          const response = await fetch('/api/scores');
+          scores = await response.json();
+
+          // Save the scores in case we go offline in the future
+          localStorage.setItem('scores', JSON.stringify(scores));
+        } catch {
+          // If there was an error then just use the last saved scores
+          const scoresText = localStorage.getItem('scores');
+          if (scoresText) {
+            scores = JSON.parse(scoresText);
+          }
+      See the about.js file for examples of using third-party endpoints
+
+Notes from Simon DB:
+   Difference from Simon services is that now the http requests will result in the backend getting/posting info from mongo db. Changes include:
+      A new batabase fjs file to be included on the backend to handle the requests. Good form is one service endpoint per request, one function in the database per service, and each function in the database does not interact with anything on the front end.
+      To access the mongodb, install the mongodb node package, have the line const {MongoClient} = require('mongodb');  Get the info to use the mongodb server (username, password, hostname) from environment variables. Then make a variable client: const client = new MongoClient(url);  Use the client to access the correct database and collection from the cluster: const scoreCollection = client.db('simon').collection('score');  
+      on scoreCollection, functions such as: insertOne and find can be used. For get methods, inputs for query and options are used. See code for examples. The return fron get requests can be put into a js array using .toArray()
+   While the information should be taken from the db, it can be placed in local storage for access if there is an issue with the network that prevents accessing the db in the future.
+
+Notes from Simon Login:
+  Now we will create a bit of security by wrapping the original router in a router that will create users, login users, and logout users. For kicks it also has the email method. This unsecure router will use the first router, meaning that all calls will pass through the first router. 
+  First thing the secure router does is:
+  secureApiRouter.use(async (req, res, next) => {
+  authToken = req.cookies[authCookieName];
+  const user = await DB.getUserByToken(authToken);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+});
+This function will continue to call service endpoints if the user is authorized and return an error if not.
+
+TODO: Look more into how cookies are stored (specifically in local storage, in the request/result objects in the service enpoints (is there a section in http for them?
+
+The way the user is authenticated is by way of hashing their password through bcrypt. The database will generate an authtoken through uuid which will be used to authenticate. The token is deleted when the user logs out. 
+When the user logs in, their password will be hashed in the same way as it origionally was, and then the two hashed strings will be compared to see if the typed password was the same as the stored.
+A lot of the code in login is to see if the user was already logged in. While neat, it is not necissary.
+
+The login and create methods on the frontend will take in the user input, and call the corresponding endpoints. The endpoints will use the database class which will use mongodb. All this will return back, and the front end will be notified whether the user has been logged in. If so, they will be taken to the rest of the website. If not, the body of the error message will be displayed.
+
+For startup- login and create in the same way, and store the room codes as well. Figure out when room codes should be deleted, how cards should be stored in the database, and how the bid should be stored.
+
+Notes from Simon Web Sockets:
+   Web sockets add peer to peer communication thorugh the server. This uses the websocket class. We will make a websocketserver in the peerproxy class which will be exported to index.js where there will be a peerproxy object created.
+  The peerproxy will have methods to initialize the upgrading the http to the websocket, a connection method to add peers (which will also create a method to send messages to all the open connections), and a method to close connections which will be used by the setinterval function which will check all conections every ten seconds to see if they are still active.
+  
+  In play.js there is a function configureWebSocket which handles displaying all messages (onopen, onclose, onmessage) by altering play.html. It also has a broadcast event which will send updates to all connections. 
+  Broadcast event is used in the save scores method.
+  
+  TODO: for startup begin with a chat, make sure it works. Then start implementing making rooms, updating the bid, who is allowed to take actions, rounds won, game won, propper icons, and player names.
