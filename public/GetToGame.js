@@ -1,12 +1,5 @@
-function login() {
-    const inputEl = document.querySelector("#name");
-    let userName = inputEl.value;
-    localStorage.setItem("userName", userName);
-    window.location.href = "JoinGame.html";
-}
-
-function gamesWon() { //will set the gamesWon element with the correct text
-    let scores = getScores();
+async function gamesWon() { //will set the gamesWon element with the correct text
+    let scores = await getScores();
     htmlEl = document.querySelector("#gamesWon");
     userName = localStorage.getItem("userName");
     if (scores.length !== 0) {
@@ -22,12 +15,18 @@ function gamesWon() { //will set the gamesWon element with the correct text
         htmlEl.textContent = "Games Won: 0"
     }
 }
-function getScores() {
+async function getScores() {
     let scores = [];
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-        scores = JSON.parse(scoresText);
-    }
+    try {
+    const scoresText = await fetch('/api/scores');
+    scores = await scoresText.json();
+    localStorage.setItem('scores', JSON.stringify(scores));
+    } catch {
+        const scoresText = localStorage.getItem('scores');
+        if (scoresText) {
+          scores = JSON.parse(scoresText);
+        }
+      }
     return scores;
 }
 function generatePlayerList() {
