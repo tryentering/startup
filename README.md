@@ -291,3 +291,53 @@ Notes from Simon Web Sockets:
   Broadcast event is used in the save scores method.
   
   TODO: for startup begin with a chat, make sure it works. Then start implementing making rooms, updating the bid, who is allowed to take actions, rounds won, game won, propper icons, and player names.
+
+
+Notes from simon react:
+https://github.com/webprogramming260/.github/blob/main/profile/simon/simon-react/simon-react.md
+
+Steps to convert:
+Reorganize code to have directories for react stuff and the web service
+Create template React application. Run npx create-react-app template-react. This creates a new directory named template-react that contains the basic configuration and template React application code.
+Clean up template code (delete unnecissary stuff and 
+Uninstall and NPM packages you won't use (e.g. stats, test)
+Delete the unnecessary create-react-app files (e.g. images)
+Rename js JSX files have jsx extension
+Replace the favicon.ico
+Update manifest.json for your project
+Clean up the index.html file to have the proper fields
+Move the files generated in template-react into the react directory 
+Convert to React Bootstrap by installing react-bootstrap and add-- import 'bootstrap/dist/css/bootstrap.min.css'; -- to files using boostrap
+Move the header and footer html to the render function of the app. In order for the styling to show up, move the main.css content into a file named app.css and import the CSS file into the app.jsx file. --import `./app.css`--
+For every html page make an equivalent react component. They will start off as stubs in you react directory
+Create the router to display the different UI components This is done by inserting the react-router-dom package into the project. First, install the package with npm install react-router-dom and then include the router component in the index.jsx and app.jsx files.
+Convert the html to React components:
+  The basic steps for converting the component include the following.
+  Copy the HTML over and put it in the return value of the component.
+  The class attribute is renamed to className so that it doesn't conflict with the JavaScript keyword class.
+  Delete the header and footer HTML since they are now represented in app.jsx.
+  Copy the JavaScript over and turn the functions into inner functions of the React component.
+  Create a file for the CSS and use an import statement in the component jsx file.
+  Create React state variables for each of the stateful objects in the component.
+  Replaced DOM query selectors with React state variables.
+  Move state up to parent components as necessary. For example, authentication state, or user name state.
+Create child components as necessary. For example, a SimonGame and SimonButton component.
+Configure the React debugger HTTP server to listen on port a different port than the Node.js server
+To configure the React HTTP debugger to listen on port x when running in our local development environment, we create a file named .env.local in the root of the project, with the text --PORT=x--
+
+Next, we modify the package.json file to include the field "proxy": "http://localhost:y". This tells the React HTTP debugger that if a request is made for a service endpoint, it forwards it to port y, where our Node.js service is listening.
+{
+  "name": "simon-react",
+  // ...
+  "proxy": "http://localhost:y"
+}
+
+We also need to change the front-end WebSocket initialization found in the gameNotifier.js constructor to explicitly use the service port (x) instead of the React HTTP debugger port (y). To explicitly send webSocket requests to port x we use the dynamically injected process environment variable that is set when webpack creates the application bundle.
+
+let port = window.location.port;
+if (process.env.NODE_ENV !== 'production') {
+  port = x;
+}
+Refactor play.jsx into simonGame.jsx, simonButton.jsx, and players.jsx
+Refactor components to take advantage of React specific functionality and to create sub-components
+Move webSocket code from play.jsx to gameNotifier.js
