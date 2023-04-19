@@ -1,5 +1,6 @@
 const {MongoClient} = require('mongodb');
 const uuid = require('uuid');
+const bcrypt = require('bcrypt');
 const userName = process.env.MONGOUSER;
 const password = process.env.MONGOPASSWORD;
 const hostname = process.env.MONGOHOSTNAME;
@@ -15,12 +16,13 @@ const userCollection = client.db('startup').collection('user');
 const scoreCollection = client.db('startup').collection('score');
 
 
-function getUser(user) {
-  return userCollection.findOne({ user: user });
+async function getUser(user) {
+  user = await userCollection.findOne({ user: user });
+  return user;
 }
 
-function getUserByToken(token) {
-  return userCollection.findOne({ token: token });
+async function getUserByToken(token) {
+  return await userCollection.findOne({ token: token });
 }
 
 async function createUser(userName, password) {
