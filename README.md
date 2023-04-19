@@ -341,3 +341,20 @@ if (process.env.NODE_ENV !== 'production') {
 Refactor play.jsx into simonGame.jsx, simonButton.jsx, and players.jsx
 Refactor components to take advantage of React specific functionality and to create sub-components
 Move webSocket code from play.jsx to gameNotifier.js
+
+
+Notes for Startup Service:
+  third party endpoints use fetch just like the locally defined endpoints/
+  To debug using service endpoints, you can only access the information on the front end, and web service calls you defined. So no tracking in the database, or on third party endpoints.
+  have a router which will take in all http requests (using the express npm package). It will handle login/creation of users, and getting any data from the database.
+  The database will use environment variables to access mongo (in this case) and query/modify the contents in the databse.
+  Cookies are... confusing. TODO Review these more
+  bcrypt can be used to hash a password uniqely so that the user doesn't have their password in the databse or flying around on too many http requests.
+  uuid provides unique strings that can be used for authtokens
+  make sure to make the databases and collections for the project before accessing them
+  query the database with .findOne, .insertOne, .find, etc.
+  After the databse is made, use module.exports to make the needed functions callable throughout the project
+  Make sure that there are default methods to store database information in local storage in case the network fails or there is some other issue
+  Note to future self. Don't have login and create user be the same button, stupid idea
+  TODO implement lobbies based on room code, and updates from the game with peers.
+  
