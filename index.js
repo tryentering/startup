@@ -1,7 +1,8 @@
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const app = express();
-const uuid = require('uuid')
+const uuid = require('uuid');
+const bcrypt = require('bcrypt');
 const DB = require('./database.js');
 
 const authCookieName = 'token';
@@ -30,7 +31,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     const user = await DB.createUser(req.body.user, req.body.password);
     // Set the cookie
     setAuthCookie(res, user.token);
-
+    console.log("sucessfully created user: " + req.body.user)
     res.send({
       id: user._id,
     });
@@ -41,9 +42,11 @@ apiRouter.post('/auth/create', async (req, res) => {
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await DB.getUser(req.body.user, req.body.passsword);
   if (user) {
-    setAuthCookie(res, user.token);
-    res.send({ id: user._id });
-    return;
+    if (await bcrypt.compare(req.body.password, user.password)) {
+      setAuthCookie(res, user.token);
+      res.send({ id: user._id });
+      return;
+    }
   }
   res.status(401).send({ msg: 'Unauthorized' });
 });

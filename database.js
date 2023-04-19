@@ -1,5 +1,5 @@
 const {MongoClient} = require('mongodb');
-
+const uuid = require('uuid');
 const userName = process.env.MONGOUSER;
 const password = process.env.MONGOPASSWORD;
 const hostname = process.env.MONGOHOSTNAME;
@@ -24,10 +24,11 @@ function getUserByToken(token) {
 }
 
 async function createUser(userName, password) {
+  const passwordHash = await bcrypt.hash(password, 10);
   const user = {
-    password: password,
+    password: passwordHash,
     user: userName,
-    token: UUID.v4(),
+    token: uuid.v4(),
   };
   await userCollection.insertOne(user);
 

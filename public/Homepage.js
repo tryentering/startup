@@ -5,6 +5,7 @@ async function login() {
 async function loginOrCreate(endpoint) {
   const userName = document.querySelector('#name')?.value;
   const password = document.querySelector('#password')?.value;
+  localStorage.setItem('userName', userName);
   const response = await fetch(endpoint, {
     method: 'post',
     body: JSON.stringify({ user: userName, password: password}),
@@ -15,8 +16,7 @@ async function loginOrCreate(endpoint) {
   const body = await response.json();
 
   if (response?.status === 200) {
-    localStorage.setItem('userName', userName);
-    window.location.href = 'play.html';
+    window.location.href = 'JoinJame.html';
   } else {
     if (endpoint !== `/api/auth/login`) {
       loginOrCreate(`/api/auth/login`)
