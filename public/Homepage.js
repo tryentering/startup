@@ -1,37 +1,12 @@
-(async () => {
-  let authenticated = false;
-  const userName = localStorage.getItem('userName');
-  if (userName) {
-    const nameEl = document.querySelector('#userName');
-    nameEl.value = userName;
-    const user = await getUser(nameEl.value);
-    authenticated = user?.authenticated;
-  }
-
-  if (authenticated) {
-    document.querySelector('#playerName').textContent = userName;
-    setDisplay('loginControls', 'none');
-    setDisplay('playControls', 'block');
-  } else {
-    setDisplay('loginControls', 'block');
-    setDisplay('playControls', 'none');
-  }
-})();
-
-async function loginUser() {
+async function login() {
   loginOrCreate(`/api/auth/login`);
-}
-
-async function createUser() {
-  loginOrCreate(`/api/auth/create`);
 }
 
 async function loginOrCreate(endpoint) {
   const userName = document.querySelector('#userName')?.value;
-  const password = document.querySelector('#userPassword')?.value;
   const response = await fetch(endpoint, {
     method: 'post',
-    body: JSON.stringify({ email: userName, password: password }),
+    body: JSON.stringify({ user: userName}),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },

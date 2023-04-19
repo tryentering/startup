@@ -78,14 +78,14 @@ secureApiRouter.use(async (req, res, next) => {
 
 // GetScores
 secureApiRouter.get('/scores', async (req, res) => {
-  const scores = await DB.getNumsPlayed();
+  const scores = await DB.getScores();
   res.send(scores);
 });
 
 // SubmitScore
 secureApiRouter.post('/score', async (req, res) => {
   await DB.addScore(req.body);
-  const scores = await DB.getNumsPlayed();
+  const scores = await DB.getScores();
   res.send(scores);
 });
 

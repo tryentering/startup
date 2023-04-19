@@ -275,6 +275,24 @@ class Game {
         this.roundsWon = 0;
         await this.resetRound();
     }
+    async saveScore() {
+        const userName = this.getPlayerName();
+        const date = new Date().toLocaleDateString();
+        const newScore = { name: userName, date: date };
+        try {
+            const response = await fetch('/api/score', {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify(newScore),
+            });
+      
+            // Store what the service gave us as the high scores
+            const scores = await response.json();
+            localStorage.setItem('scores', JSON.stringify(scores));
+        } catch {
+            this.updateScoresLocal(newScore);
+        }
+    }
     updateScoreCount() {
         let scores = [];
         const scoresText = localStorage.getItem('scores');

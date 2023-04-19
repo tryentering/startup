@@ -17,13 +17,11 @@ function addScore(score) {
   scoreCollection.insertOne(score);
 }
 
-function getNumsPlayed(user) {
+function getScores(user) {
   const query = {score: {$gt: 0}};
-  const options = {
-    "name.last": { user }
-  };
+  const options = {};
   const cursor = scoreCollection.find(query, options);
   return cursor.toArray();
 }
 
-module.exports = {addScore, getHighScores};
+module.exports = {addScore, getScores};
