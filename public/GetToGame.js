@@ -47,6 +47,8 @@ function loadLobby() {
     generatePlayerList();
     setRoomCode();
     configureWebSocket();
+    displayMsg('joined', localStorage.getItem("userName"), 'successfully joined the lobby');
+    broadcastEvent(localStorage.getItem("userName"), 'joined','successfully joined the lobby');
 }
 function setRoomCode() {
     roomCode = localStorage.getItem("roomCode");
