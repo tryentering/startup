@@ -264,7 +264,7 @@ class Game {
         this.phaseInfo.textContent = "You won the game! Congrats!";
         await delay(2000);
         await this.resetGame();
-        this.updateScoreCount();
+        this.saveScore();
         //add info to local storage
     }
     async resetGame() {
@@ -290,24 +290,19 @@ class Game {
             const scores = await response.json();
             localStorage.setItem('scores', JSON.stringify(scores));
         } catch {
-            this.updateScoresLocal(newScore);
+            this.updateScoreCount(newScore);
         }
+        update
     }
-    updateScoreCount() {
+    updateScoreCount(newScore) {
         let scores = [];
         const scoresText = localStorage.getItem('scores');
         if (scoresText) {
             scores = JSON.parse(scoresText);
         }
-        scores = this.updateScores(this.getPlayerName(), scores);
+        scores.push(newScore);
 
         localStorage.setItem('scores', JSON.stringify(scores));
-    }
-    updateScores(userName, scores) {
-        const date = new Date().toLocaleDateString();
-        const newScore = { name: userName, date: date }
-        scores.push(newScore);
-        return scores;
     }
     getPlayerName() {
         console.log(localStorage.getItem('userName'));

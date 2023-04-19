@@ -17,14 +17,14 @@
         <nav class = "navbar fixed-top navbar-dark">
           <img src = "FlowerSkullCard.jpeg">
             <a class="navbar-brand" href="#">Home</a>
-            <menu class = "navbar-nav">
+            <!-- <menu class = "navbar-nav">
                 <li class = "nav-item">
                     <a class = "nav-link" href = "JoinGame.html">Join Game</a>
                 </li>
                 <li class = "nav-item">
                     <a class = "nav-link" href = "Instructions.html">Instructions</a>
                 </li>
-            </menu>
+            </menu> -->
         </nav>
     </header>
     <main class="bg-light">
@@ -33,7 +33,8 @@
         <p>Login to play</p>
         <form method="get" action="JoinGame.html">
           <input type="text" id="name" placeholder="Your name here" />
-          <button type="submit" class="btn btn-primary" onclick = "login()">Login</button>
+          <input type="text" id="password" placeholder="password"/>
+          <button type="submit" class="btn btn-primary" onclick = "login()">Login/Create</button>
         </form>
       </div>
       <div id="picture" class="picture-box"></div>

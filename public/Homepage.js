@@ -1,12 +1,13 @@
 async function login() {
-  loginOrCreate(`/api/auth/login`);
+  loginOrCreate(`/api/auth/create`);
 }
 
 async function loginOrCreate(endpoint) {
-  const userName = document.querySelector('#userName')?.value;
+  const userName = document.querySelector('#name')?.value;
+  const password = document.querySelector('#password')?.value;
   const response = await fetch(endpoint, {
     method: 'post',
-    body: JSON.stringify({ user: userName}),
+    body: JSON.stringify({ user: userName, password: password}),
     headers: {
       'Content-type': 'application/json; charset=UTF-8',
     },
@@ -17,10 +18,9 @@ async function loginOrCreate(endpoint) {
     localStorage.setItem('userName', userName);
     window.location.href = 'play.html';
   } else {
-    const modalEl = document.querySelector('#msgModal');
-    modalEl.querySelector('.modal-body').textContent = `⚠ Error: ${body.msg}`;
-    const msgModal = new bootstrap.Modal(modalEl, {});
-    msgModal.show();
+    if (endpoint !== `/api/auth/login`) {
+      loginOrCreate(`/api/auth/login`)
+    }
   }
 }
 
